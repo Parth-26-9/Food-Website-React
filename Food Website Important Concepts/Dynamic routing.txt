@@ -1,0 +1,24 @@
+step 1) first make another path for it 
+
+e.x :-
+ 
+   {
+    path: "/hotelcard/:resId",
+    element: <HotelCard />,
+   },
+
+step 2) 
+
+   import { useParams } from "react-router-dom";
+
+  const { resId } = useParams();
+  const [data, setData] = useState("");
+
+  async function fetchMenu() {
+    const response = await fetch(
+      `https://6571bdbed61ba6fcc0136a17.mockapi.io/foodApi?number=${resId}`
+    );
+    const jsonData = await response.json();
+    setData(jsonData);
+  }
+  console.log(data)
